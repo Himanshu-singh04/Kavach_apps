@@ -1,3 +1,4 @@
+import 'package:citisers/database/userDatabase/insert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -7,15 +8,38 @@ class FirebaseServices {
 
   signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleSignInAccount =
-          await _googleSignIn.signIn();
-      if (googleSignInAccount != null) {
-        final GoogleSignInAuthentication googleSignInAuthentication =
-            await googleSignInAccount.authentication;
-        final AuthCredential authCredential = GoogleAuthProvider.credential(
-            accessToken: googleSignInAuthentication.accessToken,
-            idToken: googleSignInAuthentication.idToken);
-        await _auth.signInWithCredential(authCredential);
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      if (googleAuth?.accessToken != null && googleAuth?.idToken != null) {
+        // Create a new credential
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken,
+          idToken: googleAuth?.idToken,
+        );
+        final userCredential =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+
+        User user = userCredential.user!;
+
+        final result = await insertUserData(
+          name: user.displayName!,
+          email: user.email!,
+        );
+        if (result == 'Something went wrong while inserting data') {
+          print('Something went wrong while inserting data');
+        }
+        print(userCredential); //
+
+        // if (userCredential.user != null) {
+        //   // if (userCredential.additionalUserInfo!.isNewUser) {
+        //   //   // Basically a currently created new user}
+        //   Navigator.of(context)
+        //       .pushNamedAndRemoveUntil(home_page, (route) => false);
+        // }
       }
     } on FirebaseAuthException catch (e) {
       print(e.message);

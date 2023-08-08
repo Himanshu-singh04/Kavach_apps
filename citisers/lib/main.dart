@@ -1,3 +1,4 @@
+import 'package:citisers/database/userDatabase/mongodb.dart';
 import 'package:citisers/pages/home_page.dart';
 import 'package:citisers/pages/number_page.dart';
 import 'package:citisers/pages/otp_page.dart';
@@ -9,6 +10,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await MongoDatabase.connect();
   await Firebase.initializeApp();
   runApp(main_page());
 }
