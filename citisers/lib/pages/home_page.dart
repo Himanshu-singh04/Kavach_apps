@@ -267,7 +267,7 @@ class _home_pageState extends State<home_page> {
                       height: 25,
                       width: double.infinity,
                       child: Marquee(
-                        text: 'This is an infinte scrolling text',
+                        text: 'दुर्घटना से देर भली',
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -303,7 +303,7 @@ class _home_pageState extends State<home_page> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
-                                'Welcome to \nVJTI Maps',
+                                'Welcome, \n${FirebaseAuth.instance.currentUser!.displayName}',
                                 maxLines: 2,
                                 overflow: TextOverflow.fade,
                                 style: const TextStyle(
@@ -313,13 +313,18 @@ class _home_pageState extends State<home_page> {
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              CircleAvatar(
-                                child: CircleAvatar(
-                                  radius: 100.0,
-                                  backgroundImage:
-                                      currentUserImage as ImageProvider<Object>,
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(width: 2),
+                                  borderRadius: BorderRadius.circular(5),
                                 ),
-                              )
+                                child: Image.network(
+                                  "${FirebaseAuth.instance.currentUser!.photoURL!}",
+                                  height: 100,
+                                  width: 100,
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -588,7 +593,7 @@ class _home_pageState extends State<home_page> {
                                       borderRadius: BorderRadius.circular(5),
                                     ),
                                     child: Image.asset(
-                                      'assets/howtoget.png',
+                                      'assets/rules_reg.png',
                                       fit: BoxFit.fill,
                                       height: 100,
                                       width: 100,
@@ -598,7 +603,7 @@ class _home_pageState extends State<home_page> {
                                     height: 10,
                                   ),
                                   const Text(
-                                    'How to get \nVJTI',
+                                    'Rules and Regulations',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       // fontFamily: 'Poppins',
@@ -611,49 +616,6 @@ class _home_pageState extends State<home_page> {
                           ),
                         ),
                       ],
-                    ),
-                    const SizedBox(height: 40),
-                    Material(
-                      color: Colors.deepOrange[50],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(19),
-                        side: const BorderSide(color: Colors.transparent),
-                      ),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        onTap: () {
-                          // Navigator.pushNamed(context, mapOfVJTIRoute);
-                        },
-                        child: Center(
-                          child: Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(width: 2),
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Image.asset(
-                                  'assets/VJTITopView.png',
-                                  fit: BoxFit.fill,
-                                  height: 100,
-                                  width: 100,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const Text(
-                                'Map of \nVJTI',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  // fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
                     ),
                     const SizedBox(height: 50),
                   ],

@@ -1,7 +1,5 @@
 import 'package:citisers/pages/home_page.dart';
 import 'package:citisers/pages/number_page.dart';
-import 'package:citisers/pages/otp_page.dart';
-import 'package:citisers/pages/setting.dart';
 import 'package:citisers/utils/theme_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +31,7 @@ class _main_pageState extends State<main_page> {
             initialRoute: 'number_page',
             routes: {
               'number_page': (context) => number_page(),
-              'otp_page': (context) => otp_page(),
               'home_page': (context) => home_page(),
-              'setting_page': (context) => setting_page(),
             },
           );
         },
