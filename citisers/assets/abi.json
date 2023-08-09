@@ -1,0 +1,107 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "userID",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "userName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "vehicleNumber",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "licenseNumber",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "int256",
+				"name": "mobileNumber",
+				"type": "int256"
+			}
+		],
+		"name": "AccountCreated",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "vehicle",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "license",
+				"type": "string"
+			},
+			{
+				"internalType": "int256",
+				"name": "number",
+				"type": "int256"
+			}
+		],
+		"name": "addToBlockchain",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "MetaMaskId",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "vehicleNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "licenseNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "int256",
+						"name": "mobile",
+						"type": "int256"
+					}
+				],
+				"internalType": "struct UserData.UserStruct[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

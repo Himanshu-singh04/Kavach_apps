@@ -104,18 +104,14 @@ class _home_pageState extends State<home_page> {
           child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Colors.orangeAccent,
-              Colors.white,
-              Colors.greenAccent,
-            ],
+            colors: [hexStringToColor("57C5B6"), hexStringToColor("A3BFA8")],
           ),
         ),
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             Card(
-              elevation: 10,
+              elevation: 20,
               shadowColor: hexStringToColor("57C5B6"),
               child: DrawerHeader(
                 child: Row(children: [
@@ -162,10 +158,10 @@ class _home_pageState extends State<home_page> {
               shadowColor: hexStringToColor("57C5B6"),
               child: ListTile(
                 leading: Icon(Icons.person),
-                title: Text('Profile'),
-                subtitle: Text('View your profile'),
+                title: Text('Complete Profile'),
+                subtitle: Text('Complete your profile'),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, "complete_profile");
                 },
               ),
             ),
@@ -249,7 +245,6 @@ class _home_pageState extends State<home_page> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text(
                   "LogOut",
-                  style: TextStyle(color: Colors.black),
                 ),
               ),
             ),
@@ -294,7 +289,8 @@ class _home_pageState extends State<home_page> {
                           duration: const Duration(seconds: 0),
                           decoration: const BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: Color.fromARGB(219, 124, 5, 5),
+                            color: Color.fromRGBO(
+                                184, 255, 255, 1), // rgba(184, 225, 255, 1)
                             borderRadius: BorderRadius.zero,
                           ),
                           height: 200,
@@ -309,7 +305,7 @@ class _home_pageState extends State<home_page> {
                                 style: const TextStyle(
                                   fontSize: 25,
                                   // fontFamily: 'Poppins',
-                                  color: Colors.white,
+                                  color: Colors.black,
                                 ),
                               ),
                               const SizedBox(width: 10),
@@ -656,46 +652,56 @@ class _home_pageState extends State<home_page> {
                             allowSwipeToRotate: allowSwipeToRotate,
                           )
                         : Text("Pre-Caching images..."),
-                    Container(
-                      height: 100,
-                      width: 100,
-                      color: Colors.amber,
-                    ),
-                    Container(
-                      height: 100,
-                      width: 100,
-                      color: Colors.blueGrey,
-                    ),
-                    Container(
-                      height: 100,
-                      width: 100,
-                      color: Colors.lightBlueAccent,
-                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Add Vehicle"),
+                    )
                   ],
                 ),
               ),
             ),
             collapsed: Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.orangeAccent,
-                    Colors.white,
-                    Colors.greenAccent,
-                  ],
-                ),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(24.0),
-                  topRight: Radius.circular(24.0),
-                ),
+                // gradient: LinearGradient(
+                //   colors: [
+                //     Colors.orangeAccent,
+                //     Colors.white,
+                //     Colors.greenAccent,
+                //   ],
+                // ),
+                color: hexStringToColor("bcb6ff"),
+                // borderRadius: BorderRadius.only(
+                //   topLeft: Radius.circular(24.0),
+                //   topRight: Radius.circular(24.0),
+                // ),
               ),
               child: Center(
-                child: Text(
-                  'Slide Up',
-                  style: TextStyle(color: Colors.black, fontSize: 18.0),
-                ),
+                child: Icon(Icons.drag_handle),
               ),
             ),
+            // Container(
+            //   decoration: BoxDecoration(
+            //     // gradient: LinearGradient(
+            //     //   colors: [
+            //     //     Colors.orangeAccent,
+            //     //     Colors.white,
+            //     //     Colors.greenAccent,
+            //     //   ],
+            //     // ),
+            //     color: hexStringToColor("bcb6ff"),
+            //     // borderRadius: BorderRadius.only(
+            //     //   topLeft: Radius.circular(24.0),
+            //     //   topRight: Radius.circular(24.0),
+            //     // ),
+            //   ),
+            //   child: Center(
+            //     child: Text(
+            //       'Add Vehicle',
+            //       style: TextStyle(color: Colors.black, fontSize: 18.0),
+            //     ),
+            //   ),
+            // ),
+
             minHeight: 40.0,
             maxHeight: 500.0,
             boxShadow: [],

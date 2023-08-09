@@ -1,19 +1,17 @@
 import 'package:citisers/utils/color_utils.dart';
-import 'package:citisers/utils/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class round_appbar extends StatefulWidget {
-  const round_appbar({super.key});
+class profile_appbar extends StatefulWidget {
+  const profile_appbar({super.key});
 
   @override
-  State<round_appbar> createState() => _round_appbarState();
+  State<profile_appbar> createState() => _profile_appbarState();
 }
 
-class _round_appbarState extends State<round_appbar> {
+class _profile_appbarState extends State<profile_appbar> {
   @override
   Widget build(BuildContext context) {
-    final themeModel = Provider.of<ThemeModel>(context, listen: false);
+    // final themeModel = Provider.of<ThemeModel>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.vertical(
         bottom: Radius.circular(10),
@@ -21,21 +19,21 @@ class _round_appbarState extends State<round_appbar> {
       child: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         actions: [
-          IconButton(
-            icon: Icon(
-              themeModel.isDarkMode ? Icons.lightbulb : Icons.lightbulb_outline,
-            ),
-            onPressed: () {
-              themeModel.toggleTheme();
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {
-              // Navigator.pushNamed(context, 'setting_page');
-              Navigator.pushNamed(context, 'display_profile');
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     themeModel.isDarkMode ? Icons.lightbulb : Icons.lightbulb_outline,
+          //   ),
+          //   onPressed: () {
+          //     themeModel.toggleTheme();
+          //   },
+          // ),
+          // IconButton(
+          //   icon: Icon(Icons.person),
+          //   onPressed: () {
+          //     // Navigator.pushNamed(context, 'setting_page');
+          //     Navigator.pushNamed(context, 'complete_profile');
+          //   },
+          // )
         ],
         flexibleSpace: Container(
             decoration: BoxDecoration(
@@ -51,7 +49,7 @@ class _round_appbarState extends State<round_appbar> {
           ),
         ),
         title: Text(
-          "Citisers",
+          "Profile Completion",
           style: TextStyle(color: Colors.black),
         ),
       ),
